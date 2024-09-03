@@ -11,6 +11,7 @@ SRC = \
 	$(SRC_DIR)Bureaucrat.cpp
 
 OBJ =	$(SRC:%.cpp=$(OBJ_DIR)%.o)
+D_OBJ =	$(SRC:%.cpp=$(OBJ_DIR)%.d)
 
 # ---------- Rules --------- #
 
