@@ -1,34 +1,33 @@
-#ifndef FORM_H
-#define FORM_H
+#ifndef BUREAUCRAT_H
+#define BUREAUCRAT_H
 
 #include <iostream>
-#include "Bureaucrat.h"
+#include "Form.h"
 
-class Bureaucrat;
+class Form;
 
-class Form
+class Bureaucrat
 {
 	public:
-		Form( std::string name, int sign_grade, int exec_grade );
-		Form( const Form & f );
-		~Form();
+		Bureaucrat( int grade , std::string name );
+		Bureaucrat( const Bureaucrat & c );
+		~Bureaucrat();
 
-		Form & operator=( const Form & f );
+		Bureaucrat & operator=( Bureaucrat & c );
 
-		const std::string	get_name() const;
-		bool				get_is_signed() const;
-		int					get_sign_grade() const;
-		int					get_exec_grade() const;
+		std::string get_name() const;
+		int get_grade() const;
 
-		void	beSigned( Bureaucrat & b );
+		void	increment();
+		void	decrement();
+
+		void	signForm(Form & f);
 
 	private:
-		Form();
+		Bureaucrat();
 
 		const std::string	name;
-		bool				is_signed;
-		const int			sign_grade;
-		const int			exec_grade;
+		int					grade;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -51,8 +50,6 @@ class Form
 		};
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& dt);
-
-
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& dt);
 
 #endif
