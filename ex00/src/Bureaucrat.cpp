@@ -66,6 +66,7 @@ void Bureaucrat::increment()
 	if (this->grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException("Grade is too HIGH");
 	this->grade--;
+	std::cout << "Incremented " << this->name << " , grade is now " << this->grade << std::endl;
 }
 
 void Bureaucrat::decrement()
@@ -73,6 +74,8 @@ void Bureaucrat::decrement()
 	if (this->grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException("Grade is too LOW");
 	this->grade++;
+	std::cout << "Decremented " << this->name << " , grade is now " << this->grade << std::endl;
+
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& dt)
