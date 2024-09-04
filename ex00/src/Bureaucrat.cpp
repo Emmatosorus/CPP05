@@ -1,8 +1,8 @@
 #include "../includes/Bureaucrat.h"
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(const char *msg)
+Bureaucrat::GradeTooHighException::GradeTooHighException()
 {
-	this->message = msg;
+	this->message = "Grade is too high!";
 }
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
@@ -10,9 +10,9 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 
 }
 
-Bureaucrat::GradeTooLowException::GradeTooLowException(const char *msg)
+Bureaucrat::GradeTooLowException::GradeTooLowException()
 {
-	this->message = msg;
+	this->message = "Grade is too low!";
 }
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
@@ -35,15 +35,28 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Bureaucrat : Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( int grade , const std::string name ) : name(name)
+Bureaucrat::Bureaucrat( int grade , std::string name ) : name(name)
 {
 	std::cout << "Bureaucrat : Constructor called with grade : " << grade << std::endl;
 	this->grade = 0;
 	if (grade < 1)
-		throw Bureaucrat::GradeTooHighException("Grade is too HIGH");
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException("Grade is too LOW");
+		throw Bureaucrat::GradeTooLowException();
 	this->grade = grade;
+}
+
+Bureaucrat::Bureaucrat( const Bureaucrat & c) : name(c.get_name())
+{
+	this->grade = c.get_grade();
+	std::cout << "Bureaucrat : Copy constructor called with grade : " << this->grade << std::endl;
+}
+
+Bureaucrat &Bureaucrat::operator=( Bureaucrat &c)
+{
+	// We don't copy the name since it is const
+	this->grade = c.get_grade();
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -56,7 +69,7 @@ int Bureaucrat::get_grade() const
 	return this->grade;
 }
 
-const std::string Bureaucrat::get_name() const
+std::string Bureaucrat::get_name() const
 {
 	return this->name;
 }
@@ -64,7 +77,7 @@ const std::string Bureaucrat::get_name() const
 void Bureaucrat::increment()
 {
 	if (this->grade - 1 < 1)
-		throw Bureaucrat::GradeTooHighException("Grade is too HIGH");
+		throw Bureaucrat::GradeTooHighException();
 	this->grade--;
 	std::cout << "Incremented " << this->name << " , grade is now " << this->grade << std::endl;
 }
@@ -72,7 +85,7 @@ void Bureaucrat::increment()
 void Bureaucrat::decrement()
 {
 	if (this->grade + 1 > 150)
-		throw Bureaucrat::GradeTooLowException("Grade is too LOW");
+		throw Bureaucrat::GradeTooLowException();
 	this->grade++;
 	std::cout << "Decremented " << this->name << " , grade is now " << this->grade << std::endl;
 
