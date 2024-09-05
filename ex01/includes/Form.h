@@ -42,21 +42,13 @@ class Form
 
 		class GradeTooHighException : public std::exception
 		{
-			private:
-				std::string message;
 			public:
-				GradeTooHighException();
-				~GradeTooHighException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 				const char * what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
-			private:
-				std::string message;
 			public:
-				GradeTooLowException();
-				~GradeTooLowException() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
 				const char * what() const throw();
 		};
 };

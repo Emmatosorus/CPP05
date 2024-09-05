@@ -1,49 +1,27 @@
 #include "../includes/Form.h"
 
-Form::GradeTooHighException::GradeTooHighException()
-{
-	this->message = "Permission denied, grade too high";
-}
-
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return this->message.c_str();
-}
-
-Form::GradeTooHighException::~GradeTooHighException() throw()
-{
-}
-
-Form::GradeTooLowException::GradeTooLowException()
-{
-	this->message = "Permission denied, grade too low";
+	return "Permission denied, grade too high";
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return this->message.c_str();
+	return "Permission denied, grade too low";
 }
 
-Form::GradeTooLowException::~GradeTooLowException() throw()
-{
-}
-
-Form::Form()
-: name("default"), sign_grade(0), exec_grade(0)
+Form::Form() : name("default"), sign_grade(0), exec_grade(0)
 {
 	std::cout << "Form : Default constructor called" << std::endl;
-
 }
 
-Form::Form(const std::string name, const int sign_grade, const int exec_grade)
-: name(name), sign_grade(sign_grade), exec_grade(exec_grade)
+Form::Form(const std::string name, const int sign_grade, const int exec_grade) : name(name), sign_grade(sign_grade), exec_grade(exec_grade)
 {
 	std::cout << "Form : Constructor called" << std::endl;
 	this->is_signed = false;
 }
 
-Form::Form( const Form & f)
-: name(f.get_name()), sign_grade(f.get_sign_grade()), exec_grade(f.get_exec_grade())
+Form::Form( const Form & f) : name(f.get_name()), sign_grade(f.get_sign_grade()), exec_grade(f.get_exec_grade())
 {
 	std::cout << "Form : Copy constructor called" << std::endl;
 	this->is_signed = f.get_is_signed();
