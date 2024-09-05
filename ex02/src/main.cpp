@@ -111,7 +111,7 @@ int main(void)
 		std::cout << std::endl;
 		steve.signForm(r);
 		std::cout << std::endl;
-		r.execute(steve);
+		steve.executeForm(r);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e)
@@ -127,7 +127,7 @@ int main(void)
 		std::cout << std::endl;
 		steve.signForm(r);
 		std::cout << std::endl;
-		r.execute(steve);
+		steve.executeForm(r);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e)
