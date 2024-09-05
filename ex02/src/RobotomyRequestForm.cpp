@@ -29,13 +29,19 @@ std::string RobotomyRequestForm::get_target() const
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
+	static int rounds = 0;
+
+	rounds++;
 	srand(time(0));
 	if (!this->get_is_signed())
 		throw NotSignedException();
 	if (executor.get_grade() > this->get_exec_grade())
 		throw GradeTooLowException();
-	int random = rand();
-	std::cout << "Brrrrrrrrrrrrrrrrrrr" << std::endl;
+	int i = 0;
+	int random;
+	while (i++ < rounds)
+		random = rand();
+	std::cout << BOLD << WHITE << "Brrrrrrrrrrrrrrrrrrr" << END << std::endl;
 	if (random % 2)
 		std::cout << BOLD << WHITE << "RobotomyRequestForm : Robotomized " << this->get_target() << " successfully!" << END << std::endl;
 	else

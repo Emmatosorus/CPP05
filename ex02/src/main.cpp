@@ -49,7 +49,8 @@ int main(void)
 		std::cout << std::endl;
 		steve.signForm(r);
 		std::cout << std::endl;
-		r.execute(steve);
+		for (int x = 0; x < 5; x++)
+			r.execute(steve);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e)
