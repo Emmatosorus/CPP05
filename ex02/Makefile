@@ -9,7 +9,11 @@ SRC_DIR = src/
 SRC = \
 	$(SRC_DIR)main.cpp \
 	$(SRC_DIR)Bureaucrat.cpp \
-	$(SRC_DIR)Form.cpp
+	$(SRC_DIR)AForm.cpp \
+	$(SRC_DIR)ShrubberyCreationForm.cpp \
+	$(SRC_DIR)RobotomyRequestForm.cpp \
+	$(SRC_DIR)PresidentialPardonForm.cpp
+
 
 OBJ =	$(SRC:%.cpp=$(OBJ_DIR)%.o)
 D_OBJ =	$(SRC:%.cpp=$(OBJ_DIR)%.d)
@@ -32,6 +36,7 @@ $(OBJ_DIR):
 
 clean:
 	rm -rf $(OBJ_DIR)
+	rm -rf $(wildcard *_shrubbery)
 
 fclean:
 	$(MAKE) clean

@@ -1,5 +1,8 @@
 #include "../includes/Bureaucrat.h"
-#include "../includes/Form.h"
+#include "../includes/AForm.h"
+#include "../includes/ShrubberyCreationForm.h"
+#include "../includes/RobotomyRequestForm.h"
+#include "../includes/PresidentialPardonForm.h"
 
 
 int main(void)
@@ -8,8 +11,15 @@ int main(void)
 	try
 	{
 		Bureaucrat	steve = Bureaucrat(15, "Steve");
-		Form		b = Form( "b42", 42, 10);
-		std::cout << steve << std::endl;
+		ShrubberyCreationForm s = ShrubberyCreationForm("home");
+
+		std::cout << std::endl;
+
+		steve.signForm(s);
+		std::cout << std::endl;
+		s.execute(steve);
+
+		std::cout << std::endl;
 	}
 	catch (std::exception & e)
 	{
@@ -19,13 +29,10 @@ int main(void)
 	try
 	{
 		Bureaucrat	steve = Bureaucrat(15, "Steve");
-		Form		b = Form( "b42", 42, 10);
+		ShrubberyCreationForm s = ShrubberyCreationForm("park");
 
 		std::cout << std::endl;
-
-		std::cout << b;
-		steve.signForm(b);
-		std::cout << b;
+		s.execute(steve);
 
 		std::cout << std::endl;
 	}
@@ -36,15 +43,13 @@ int main(void)
 	std::cout << std::endl << "\x1b[1;36m############### TEST 3 ###############\x1b[0m" << std::endl << std::endl;
 	try
 	{
-		Bureaucrat	bob = Bureaucrat(15, "Bob");
-		Form		b = Form( "b21", 2, 10);
+		Bureaucrat	steve = Bureaucrat(15, "Steve");
+		RobotomyRequestForm	r = RobotomyRequestForm("Bob");
 
 		std::cout << std::endl;
-
-		std::cout << b;
-		bob.signForm(b);
-		std::cout << b;
-
+		steve.signForm(r);
+		std::cout << std::endl;
+		r.execute(steve);
 		std::cout << std::endl;
 	}
 	catch (std::exception & e)
@@ -54,14 +59,11 @@ int main(void)
 	std::cout << std::endl << "\x1b[1;36m############### TEST 4 ###############\x1b[0m" << std::endl << std::endl;
 	try
 	{
-		Bureaucrat	alex = Bureaucrat(15, "Alex");
-		Form		b = Form( "b21", 2, 10);
+		Bureaucrat	steve = Bureaucrat(15, "Steve");
+		RobotomyRequestForm	r = RobotomyRequestForm("Bob");
 
 		std::cout << std::endl;
-
-		std::cout << b;
-		b.beSigned(alex);
-		std::cout << b;
+		r.execute(steve);
 
 		std::cout << std::endl;
 	}
@@ -72,16 +74,76 @@ int main(void)
 	std::cout << std::endl << "\x1b[1;36m############### TEST 5 ###############\x1b[0m" << std::endl << std::endl;
 	try
 	{
-		Bureaucrat	kerman = Bureaucrat(15, "Kerman");
-		Form		b = Form( "b21", 42, 10);
+		Bureaucrat	steve = Bureaucrat(15, "Steve");
+		PresidentialPardonForm	r = PresidentialPardonForm("Bob");
 
 		std::cout << std::endl;
-
-		std::cout << b;
-		b.beSigned(kerman);
-		std::cout << b;
+		r.execute(steve);
 
 		std::cout << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl << "\x1b[1;36m############### TEST 6 ###############\x1b[0m" << std::endl << std::endl;
+	try
+	{
+		Bureaucrat	steve = Bureaucrat(15, "Steve");
+		PresidentialPardonForm	r = PresidentialPardonForm("Bob");
+
+		std::cout << std::endl;
+		steve.signForm(r);
+		std::cout << std::endl;
+		r.execute(steve);
+		std::cout << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl << "\x1b[1;36m############### TEST 6 ###############\x1b[0m" << std::endl << std::endl;
+	try
+	{
+		Bureaucrat	steve = Bureaucrat(1, "Steve");
+		PresidentialPardonForm	r = PresidentialPardonForm("Bob");
+
+		std::cout << std::endl;
+		steve.signForm(r);
+		std::cout << std::endl;
+		r.execute(steve);
+		std::cout << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl << "\x1b[1;36m############### TEST 6 ###############\x1b[0m" << std::endl << std::endl;
+	try
+	{
+		Bureaucrat	steve = Bureaucrat(8, "Steve");
+		PresidentialPardonForm	r = PresidentialPardonForm("Bob");
+
+		std::cout << std::endl;
+		steve.signForm(r);
+		std::cout << std::endl;
+		r.execute(steve);
+		std::cout << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl << "\x1b[1;36m############### TEST 7 ###############\x1b[0m" << std::endl << std::endl;
+	try
+	{
+		Bureaucrat	steve = Bureaucrat(1, "Steve");
+		PresidentialPardonForm	r = PresidentialPardonForm("Bob");
+
+		std::cout << r << std::endl;
+		steve.signForm(r);
+		std::cout << std::endl;
+		std::cout << r << std::endl;
 	}
 	catch (std::exception & e)
 	{

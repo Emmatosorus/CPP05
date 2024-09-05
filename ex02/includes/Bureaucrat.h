@@ -2,9 +2,9 @@
 #define BUREAUCRAT_H
 
 #include <iostream>
-#include "Form.h"
+#include "AForm.h"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -21,7 +21,7 @@ class Bureaucrat
 		void	increment();
 		void	decrement();
 
-		void	signForm(Form & f);
+		void	signForm(AForm & f);
 
 	private:
 		Bureaucrat();
