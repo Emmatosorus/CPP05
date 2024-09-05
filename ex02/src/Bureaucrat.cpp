@@ -59,7 +59,7 @@ void Bureaucrat::increment()
 	if (this->grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
 	this->grade--;
-	std::cout << "Incremented " << this->name << " , grade is now " << this->grade << std::endl;
+	std::cout << BOLD << WHITE << "Incremented " << this->name << " , grade is now " << this->grade << END << std::endl;
 }
 
 void Bureaucrat::decrement()
@@ -67,23 +67,23 @@ void Bureaucrat::decrement()
 	if (this->grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->grade++;
-	std::cout << "Decremented " << this->name << " , grade is now " << this->grade << std::endl;
+	std::cout << BOLD << WHITE << "Decremented " << this->name << " , grade is now " << this->grade << END << std::endl;
 
 }
 
-void Bureaucrat::signForm(Form &f)
+void Bureaucrat::signForm(AForm &f)
 {
 	if (this->grade > f.get_sign_grade())
 	{
-		std::cout << this->name << " couldn't sign " << f.get_name() << " due to grade being too low" << std::endl;
+		std::cout << BOLD << WHITE << this->name << " couldn't sign " << f.get_name() << " due to grade being too low" << END << std::endl;
 		return;
 	}
 	f.beSigned(*this);
-	std::cout << this->name << " signed " << f.get_name() << std::endl;
+	std::cout << BOLD << WHITE << this->name << " signed " << f.get_name() << END << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& dt)
 {
-	os << dt.get_name() << ", bureaucrat grade " << dt.get_grade();
+	os << BOLD << WHITE << dt.get_name() << ", bureaucrat grade " << dt.get_grade() << END ;
 	return os;
 }
