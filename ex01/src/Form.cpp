@@ -46,7 +46,7 @@ Form::Form( const Form & f)
 : name(f.get_name()), sign_grade(f.get_sign_grade()), exec_grade(f.get_exec_grade())
 {
 	std::cout << "Form : Copy constructor called" << std::endl;
-	this->is_signed = is_signed;
+	this->is_signed = f.get_is_signed();
 }
 
 Form::~Form()
@@ -99,14 +99,14 @@ void Form::beSigned(Bureaucrat &b)
 
 std::ostream& operator<<(std::ostream& os, const Form& f)
 {
-	os << "/*********************" << std::endl;
-	os << "Name : " << f.get_name() << std::endl;
+	os <<  CYAN <<  "/*********************" << END << std::endl;
+	os << UNDER << WHITE << "Name :" << END << " " << f.get_name() << std::endl;
 	if (f.get_is_signed())
-		os << "Signed : ✅" << std::endl;
+		os << UNDER << WHITE << "Signed :" << END << " ✅" << std::endl;
 	else
-		os << "Signed : ❌" << std::endl;
-	os << "Grade required to sign : " << f.get_sign_grade() << std::endl;
-	os << "Grade required to execute : " << f.get_exec_grade() << std::endl;
-	os << "/*********************" << std::endl;
+		os << UNDER << WHITE << "Signed :" << END << " ❌" << std::endl;
+	os << UNDER << WHITE << "Grade required to sign :" << END << " " << f.get_sign_grade() << std::endl;
+	os << UNDER << WHITE << "Grade required to execute :" << END << " " << f.get_exec_grade() << std::endl;
+	os <<  CYAN <<  "/*********************" << END << std::endl;
 	return os;
 }
