@@ -22,6 +22,7 @@ class Bureaucrat
 		void	decrement();
 
 		void	signForm(AForm & f);
+		void	executeForm(AForm const & form);
 
 	private:
 		Bureaucrat();
