@@ -1,33 +1,13 @@
 #include "../includes/Bureaucrat.h"
 
-Bureaucrat::GradeTooHighException::GradeTooHighException()
-{
-	this->message = "Grade is too high!";
-}
-
-Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
-{
-
-}
-
-Bureaucrat::GradeTooLowException::GradeTooLowException()
-{
-	this->message = "Grade is too low!";
-}
-
-Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
-{
-
-}
-
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return this->message.c_str();
+	return "Grade is too high!";
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return this->message.c_str();
+	return "Grade is too low!";
 }
 
 Bureaucrat::Bureaucrat()
