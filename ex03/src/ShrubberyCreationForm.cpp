@@ -35,7 +35,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 		throw GradeTooLowException();
 	std::string filename = this->get_target();
 	std::ofstream file(filename.c_str());
-	if (file.bad())
+	if (!file)
 	{
 		std::cout << BOLD << RED << "ShrubberyCreationForm : couldn't open " << this->get_target() << END << std::endl;
 		return ;

@@ -2,12 +2,12 @@
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return "Permission denied, grade too high";
+	return "\x1b[31;1mPermission denied, grade too high\x1b[0m";
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return "Permission denied, grade too low";
+	return "\x1b[31;1mPermission denied, grade too low\x1b[0m";
 }
 
 Form::Form() : name("default"), sign_grade(0), exec_grade(0)
